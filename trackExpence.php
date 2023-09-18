@@ -11,6 +11,7 @@ class ExpenceTracker
     public int $user_input;
     public $user_income;
     public $user_expence;
+    public $user_savings;
 
     public array $options = [
         1 => "1. Add income",
@@ -85,7 +86,7 @@ class ExpenceTracker
         $new_income = readline("\nAdd Income : ");
         $old_income = $this->user_income ?? 0;
         $total_income = $old_income + $new_income;
-        $this->user_expence = $this->user_expence - $new_income;
+        $this->user_savings = $this->user_income - $this->user_expence;
 
         $this->user_income = $total_income;
 
@@ -106,7 +107,7 @@ class ExpenceTracker
         $new_expence = readline("\nAdd Expence : ");
         $old_expence = $this->user_expence ?? 0;
         $total_expence = $old_expence + $new_expence;
-        $this->user_income = $this->user_income - $new_expence;
+        $this->user_savings = $this->user_income - $this->user_expence;
 
         $this->user_expence = $total_expence;
 
@@ -122,7 +123,7 @@ class ExpenceTracker
     }
     public function viewSavings()
     {
-        printf('viewSavings' . $this->user_income);
+        printf('viewSavings' . $this->user_savings);
 
         $this->showAllOptions();
     }
